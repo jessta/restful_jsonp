@@ -14,37 +14,22 @@ For example, to make a `PUT` request to `/users/1.json`, you would make a JSONP 
 
 ##### Renderer
 
-The plugin also overrides the controller `render` method to detect an illegal JSONP status (4xx, 5xx) and respond with 200 instead. This allows you to adds a custom Responder for JSONP that automatically adds special behaviour to
-`respond_with` (via a custom `display` method). 
+The plugin also overrides the controller `render` method to detect an illegal JSONP status (4xx, 5xx) and respond with a 200 instead. This allows clients to access the content of the error and respond accordingly, e.g.:
 
-For JSONP requests handled with `respond_with`:
-
-1. `:callback => param[:callback]` will be automatically added to the `render` options
-2. Error `:status` codes (e.g. `:unprocessable_entity`) will be changed to `:accepted`, 
-since error responses cannot be handled by JSONP. To detect errors in JSONP responses
-check for an `error` attribute in the returned data.
+    {
+        "message":"Invalid Token",
+        "status":401,
+        "error":"Unauthorized"
+    }
 
 
-Installation
----------------
+Usage
+-----
 
-First, install the gem: 
-
-`gem install restful_jsonp`
-
-Then add this to your Rails app's `Gemfile`:
-
-`gem 'restful_jsonp'
-
-Note that this only works for Rails 3. In principle you could try to swap in the RestfulJSONP::MethodOverride
-middleware into a Rails 2.3+ app, but this has not been tested.
-
-To enable the custom JSONP Responder, add this to your `ApplicationController` (or any
+Add this line to your `ApplicationController` (or any
 controller that you want to enable the responder for):
 
-`self.responder = RestfulJSONP::JSONPResponder`
-
-To enable
+      include RestfulJSONP
 
 How it Works
 ------------
@@ -57,14 +42,3 @@ or `GET` request.
 Note that this functionality is enabled for all requests, regardless of whether they are done
 via JSONP or otherwise.
 
-
-History
----------
-
-##### 1.0.2
-
-* Fixed error response processing in JSONPResponder 
-
-##### 1.0.0
-
-* Initial release
