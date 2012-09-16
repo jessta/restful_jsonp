@@ -29,6 +29,10 @@ module RestfulJSONP
   end
 
   def http_status_incompatible?(status)
+    if status.is_a?(Symbol)
+      status = Rack::Utils::SYMBOL_TO_STATUS_CODE[status]
+    end
+
     # 4xx or 5xx status code
     status and [4, 5].include?(status / 100) 
   end
