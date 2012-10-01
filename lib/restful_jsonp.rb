@@ -1,7 +1,7 @@
 require 'rails'
 require 'action_controller/base'
 require 'restful_jsonp/method_override'
-require 'restful_jsonp/jsonp_render'
+require 'restful_jsonp/status_codes'
 
 module RestfulJSONP
   class Railtie < Rails::Railtie

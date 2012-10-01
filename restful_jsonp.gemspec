@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name     = "restful_jsonp"
-  gem.version  = "2.0.0"
+  gem.version  = "2.1.0"
   gem.authors  = ["Matt Zukowski", "James Richard"]
   gem.email    = ["hebo@cuddlyzombie.com"]
   gem.homepage = "http://github.com/Hebo/restful_jsonp"
