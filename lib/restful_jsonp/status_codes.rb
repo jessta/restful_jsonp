@@ -4,9 +4,10 @@ module RestfulJSONP
     # Flash requires 200 status codes just like JSONP
     JSONP_PARAMS = ['callback', 'as3']
 
-    def initialize(app, routes=[])
+    def initialize(app, config={})
       @app = app
-      @routes = routes
+      @routes = config[:routes] || []
+      @params = config[:params] || JSONP_PARAMS
     end
 
     def call(env)
