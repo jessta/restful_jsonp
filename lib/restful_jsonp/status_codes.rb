@@ -36,7 +36,7 @@ module RestfulJSONP
     end
 
     def jsonp_request?
-      JSONP_PARAMS.any? {|p| @req.params.has_key?(p)}
+      @params.any? {|p| @req.params.has_key?(p)}
     end
 
     def enabled_route?
