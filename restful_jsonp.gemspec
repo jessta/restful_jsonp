@@ -1,6 +1,6 @@
 Gem::Specification.new do |gem|
   gem.name     = "restful_jsonp"
-  gem.version  = "2.1.0"
+  gem.version  = "2.1.1"
   gem.authors  = ["Matt Zukowski", "James Richard"]
   gem.email    = ["hebo@cuddlyzombie.com"]
   gem.homepage = "http://github.com/Hebo/restful_jsonp"
@@ -11,5 +11,5 @@ Gem::Specification.new do |gem|
   gem.files = `git ls-files`.split("\n")
 
   gem.add_dependency "rack", "~> 1"
-  gem.add_dependency "rails", "~> 3"
+  gem.add_dependency "rails"
 end
